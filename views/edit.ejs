@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title><%=result.name%></title>
+  </head>
+  <body>
+    <h1>Edit <%result.name%></h1>
+    <form
+      action="/edit?_id=<%=result._id%>"
+      enctype="multipart/form-data"
+      method="post"
+    >
+      name: <input type="text" name="name" value="<%=result.name%>" /><br />
+      borough:
+      <input type="text" name="borough" value="<%=result.borough%>" /><br />
+      cuisine:
+      <input type="text" name="cuisine" value="<%=result.cuisine%>" /><br />
+      street:
+      <input
+        type="text"
+        name="street"
+        value="<%=result.address[0].street%>"
+      /><br />
+      building:
+      <input
+        type="text"
+        name="building"
+        value="<%=result.address[0].building%>"
+      /><br />
+      zipcode:
+      <input
+        type="text"
+        name="zipcode"
+        value="<%=result.address[0].zipcode%>"
+      /><br />
+
+      <%if (result.address[0].coord[0].lat == null) { %> GPS Coordinates (Lat.):
+      <input type="text" name="lat" value="" /><br />
+      <% } else { %> GPS Coordinates (Lat.):
+      <input
+        type="text"
+        name="lat"
+        value="<%=result.address[0].coord[0].lat%>"
+      /><br />
+      <% } %> <%if (result.address[0].coord[0].lon == null) { %> GPS Coordinates
+      (Lon.): <input type="text" name="lon" value="" /><br />
+      <% } else { %> GPS Coordinates (Lon.):
+      <input
+        type="text"
+        name="lon"
+        value="<%=result.address[0].coord[0].lon%>"
+      /><br />
+      <% } %> Photo: <input type="file" name="photo" /><br />
+      <input type="submit" value="Save" />
+    </form>
+    <a href="javascript:history.back()"><button>Back to previous page</button></a>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+<html>
+  <body>
+    <h1>Search result(s):</h1>
+    <ol>
+      <% if(docs.length == 0) { %>
+      <li style="list-style: none;"><h2>No result found</h2</li>
+      <% } else { %> <% for( var i=0; i < docs.length; i++) { %>
+      <li><a href="/display?_id=<%=docs[i]._id%>"><%=docs[i].name%></a></li>
+      <% } %> <% } %>
+    </ol>
+    <a href="/home"><button>Go back home</button></a>
+  </body>
+</html>

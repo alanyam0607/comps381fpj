@@ -1,0 +1,38 @@
+<html>
+<body>
+    <title><%= result.name%></title>
+    <H1><%= result.name%></H1>
+    <%if (result.photoMimetype.startsWith('image')) { %>
+        <img src="data:image/jpeg;base64,<%= result.photo%>" style="width: 90%; height: 60%; margin: auto; object-fit: contain;">
+        <br>
+    <% } %>
+   
+    <p>Borough: <%= result.borough%></p>
+    <p>Cuisine: <%= result.cuisine%></p>
+    <p>Street: <%= result.address[0].street%></p>
+    <p>Building: <%= result.address[0].building%></p>
+    <p>Zipcode: <%= result.address[0].zipcode%></p>
+
+    <%if ((result.address[0].coord[0].lat !== null) || (result.address[0].coord[0].lon !== null)) { %>
+        <p>GPS Lat: <%= result.address[0].coord[0].lat%></p>
+        <p>GPS Lon: <%= result.address[0].coord[0].lon%></p>
+        <a href="/map?lat=<%=result.address[0].coord[0].lat%>&lon=<%=result.address[0].coord[0].lon%>"><button>Google Map</button></a>
+    <% } %>
+
+    <%if (result.grades.length > 0) {%>
+        <p>Rating:</p>
+        <ol>
+                <% for(var i=0; i<result.grades.length; i++) {%>
+                        <li><%= result.grades[i].user%> (<%= result.grades[i].score%>)</li>
+                <% } %>
+        </ol>
+    <% } %>
+
+    <p>Created by: <%= result.owner%></p>
+    <div style="display: flex; justify-content: space-around; width: 25%;">
+    <a href="/rate?_id=<%= result._id%>&rater=<%= username%>"><button>Rate</button></a>
+    <a href="/edit?_id=<%=result._id%>"><button>Edit</button></a>
+    <a href="/delete?_id=<%=result._id%>"><button>Delete</button></a>
+    <a href="/home"><button>Go back home</button></a>
+    </div>
+    </body></html>

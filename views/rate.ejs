@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Rate</title>
+  </head>
+  <body>
+    <h1>Rate Restaurant</h1>
+    <form
+      action="/rate?_id=<%=_id%>&rater=<%=username%>"
+      enctype="multipart/form-data"
+      method="post"
+    >
+      <label for="rate">Score (1-10):</label>
+      <input
+        type="number"
+        id="rate"
+        name="rate"
+        min="1"
+        max="10"
+        value="1"
+        required
+      />
+      <input type="submit" value="Rate" />
+    </form>
+    <a href="javascript:history.back()"><button>Back to previous page</button></a>
+  </body>
+</html>

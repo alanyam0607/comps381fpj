@@ -1,0 +1,16 @@
+
+<html><head><title>Restaurant List</title></head>
+<body><h1>Restaurants List</h1>
+<h2>User: <%=username %><a href="/logout"><br><button>Logout</button></a></h2>
+<h2>Showing <%= restaurants.length %> document(s)</h2>
+<a href="/search"><button>Search</button></a>
+<a href="/create"><button>Create New Restaurant</button></a>
+<a href="/home"><button>Reload</button></a>
+<a href="/secrets"><button>Easter Egg</button></a>
+<ol>
+        <% for(var i=0; i<restaurants.length; i++) { %>
+                <li><a href="/display?_id=<%= restaurants[i]._id%>"><%= restaurants[i].name%></a></li>
+        <% } %>
+
+</ol>
+</body></html>
